@@ -1,4 +1,5 @@
 import { expect } from "chai";
+import { Helicopter } from "../src/helicopter";
 
 // The helicopter starts at the origin, (0,0)
 // If command is move forward, helicoptor moves in positive y direction
@@ -6,8 +7,9 @@ import { expect } from "chai";
 // If command is move left, helicoptor moves in negative x direction
 // If command is move right, helicoptor moves in positive x direction
 
-describe("something", () => {
-  it("does something", () => {
-    expect(true).is.true;
+describe("mars helicopter", () => {
+  it("starts at the origin", () => {
+    const h = new Helicopter();
+    expect(h.???).is.eql(0);
   });
 });
