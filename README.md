@@ -1,15 +1,38 @@
-# TypeScript Template Project
+# Mars Helicopter Challenge #
 
-This is a minimal template project for TypeScript development, e.g. for use in a [Code Retreat](https://www.coderetreat.org/), especially for use with [mob.sh](https://mob.sh/).
+You’re part of the team that explores Mars by sending remotely controlled helicopters to the surface of the planet. Develop an API that translates the commands sent from earth to instructions that are understood by the helicopter.
 
-## Quick Start
+## Requirements ##
+You are given a helicopter that has an initial starting point
+The helicopter receives one instruction at a time as a single character ('f', 'b', 'l' or 'r')
+When the helicopter moves, it's position is updated, you can read the new coordinates from
 
-1. Create a repository from this template. See [Creating a repository from a template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template) for more information.
-2. Install the dependencies: `npm install`
-3. Watch for file changes are run the tests: `npm run watch`
-4. Edit `test/sample.test.ts`.
+### Pseudo Code:
+#### Object Oriented:
+  
+``` 
+helicopter = Helicopter(x=0, y=0)
+helicopter.move('f')
+assert helicopter.y == 1
+assert helicopter.x == 0
+```
 
-## Default Tools
-- [Mocha](https://mochajs.org/) is used as the test running.
-- [Chai](https://www.chaijs.com/) is used for assertions.
-- [Prettier](https://prettier.io/) is available to standardize code style.
+#### Functional:
+
+```  
+assert move_helicopter(starting_point=Position(0,0), move='f') == Position(0, 1)
+```
+
+
+## Rules
+Write your tests first!
+No red phases while refactoring.
+
+## New Requirements ##
+Multiple commands: Transmission of data from Earth to Mars is kinda slow, so we'd like to be able to send batches of commands.
+
+Error Handling: Data transmissions over the deep space network sometimes introduce errors, so be prepared to handle invalid commands, starting positions, and so on.
+
+Spherical Planet: As it turns out, Mars is (roughly) spherical, and if you go far enough in one direction, you get back to where you started. The first line of the input now contains the size of the grid.
+
+Turning and moving: This helicopter has a fixed forward facing camera, so it turns out that it's important that it be able to turn. The input now includes the direction (N, S, E, W) the helicopter is facing in addition to it's starting position. Commands can now include L and R, for turn left and right 90° respectively. The other commands are now relative to the direction the helicopter is facing.
